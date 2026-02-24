@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartBook - Trang chủ</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/search.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="customer-dashboard.html">
+                    <div class="logo-icon"></div>
+                    <h1>Smart<span>Book</span></h1>
+                </a>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm sách...">
+                <button id="searchButton" title="Tìm kiếm"><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="nav-links">
+                <a href="customer-dashboard.html" class="customer-only">Trang chủ</a>
+                
+                <!-- Menu danh mục với dropdown -->
+                <div class="category-dropdown">
+                    <button class="category-btn">
+                        <i class="fas fa-list"></i> Danh mục sách
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="category-content">
+                        <div class="category-column">
+                            <h4>Sách Triết Lý</h4>
+                            <a href="#" class="protected-feature active">Nhân Cách</a>
+                            <a href="#" class="protected-feature active">Đạo Đức</a>
+                            <a href="#" class="protected-feature active">Tâm Lý</a>
+                            <a href="#" class="protected-feature active">Sức Khỏe</a>
+                            <a href="#" class="protected-feature active">Làm Giàu</a>
+                        </div>
+                        <div class="category-column">
+                            <h4>Sách Lập Trình</h4>
+                            <a href="#" class="protected-feature active">Java</a>
+                            <a href="#" class="protected-feature active">C++</a>
+                            <a href="#" class="protected-feature active">Python</a>
+                            <a href="#" class="protected-feature active">PHP</a>
+                            <a href="#" class="protected-feature active">C#</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Giỏ hàng - yêu cầu đăng nhập -->
+                <a href="cart.html" class="cart-link protected-feature">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+
+                <!-- Phần hiển thị khi chưa đăng nhập -->
+                <div class="guest-links">
+                    <a href="login.html"><i class="fas fa-user"></i> Đăng nhập</a>
+                    <a href="register.html"><i class="fas fa-user-plus"></i> Đăng ký</a>
+                </div>
+
+                <!-- Phần hiển thị khi đã đăng nhập -->
+                <div class="user-links">
+                    <div class="user-greeting">
+                        <span>Xin chào</span>
+                       
+                        <div class="user-dropdown">
+                            <div class="customer-menu">
+                                <a href="account-info.html" class="protected-feature">
+                                    <i class="fas fa-user-circle"></i> Thông tin tài khoản
+                                </a>
+                                <a href="orders.html" class="dashboard-item">
+                                    <i class="fas fa-shopping-bag"></i> Đơn hàng
+                                </a>
+                                
+                            </div>
+                            <a href="#" class="logout-button">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Container kết quả tìm kiếm -->
+    <div id="searchResults" style="display: none; padding: 2rem 5%; margin-top: 80px;">
+        <h2>Kết quả tìm kiếm</h2>
+        <div id="searchResultsGrid" class="book-grid"></div>
+        <p id="noResultsMessage" style="display: none; text-align: center; margin-top: 2rem;">Không tìm thấy sách nào phù hợp.</p>
+    </div>
+
+    <main class="customer-only">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Chào mừng đến với SmartBook</h2>
+                    <p class="hero-subtitle">Kho tàng tri thức cho mọi độ tuổi</p>
+                    <div class="hero-features">
+                        <div class="feature">
+                            <i class="fas fa-book"></i>
+                            <span>Hơn 1000+ đầu sách</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-truck"></i>
+                            <span>Giao hàng nhanh chóng</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-tags"></i>
+                            <span>Giá cả hợp lý</span>
+                        </div>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="#newBooksGrid" class="cta-button primary">
+                            <i class="fas fa-shopping-cart"></i>
+                            Mua sắm ngay
+                        </a>
+                       
+                    </div>
+                </div>
+                <div class="hero-images">
+                    <div class="book-stack">
+                        <img src="images/books/sach1.jpg" alt="Sách nổi bật 1" class="book-img book1">
+                        <img src="images/books/sach2.jpg" alt="Sách nổi bật 2" class="book-img book2">
+                        <img src="images/books/sach3.jpg" alt="Sách nổi bật 3" class="book-img book3">
+                    </div>
+                    <div class="floating-elements">
+                        <div class="float-item stars">
+                            <i class="fas fa-star"></i>
+                            <span>4.9/5</span>
+                        </div>
+                        <div class="float-item users">
+                            <i class="fas fa-users"></i>
+                            <span>1000+ khách hàng</span>
+                        </div>
+                        <div class="float-item discount">
+                            <i class="fas fa-percent"></i>
+                            <span>Giảm đến 40%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Categories -->
+        <section class="featured-categories">
+            <h3>Danh Mục Nổi Bật</h3>
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="images\books\sach4.jpg" alt="Sách Lập Trình">
+                    <h4>Sách Lập Trình</h4>
+                </div>
+                <div class="category-card">
+                    <img src="images\books\sach3.jpg" alt="Sách OOP">
+                    <h4>Sách OOP</h4>
+                </div>
+                <div class="category-card">
+                    <img src="images\books\sach2.jpg" alt="Sách Hay">
+                    <h4>Sách Hay</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Books Section -->
+        <section class="book-section">
+            <h3>Sách Mới</h3>
+            <div class="book-grid" id="newBooksGrid">
+                <!-- Nhà Giả Kim -->
+                <div class="book-card">
+                    <div class="book-image">
+                        <a href="javascript:void(0);" onclick="viewBookDetail(1)">
+                            <img src="images/books/sach1.jpg" alt="Đăc Nhân Tâm" onerror="this.src='images/placeholder.jpg'">
+                        </a>
+                        <div class="book-overlay">
+                            <a href="javascript:void(0);" class="view-detail-btn" onclick="viewBookDetail(1)">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </a>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h4>Đăc Nhân Tâm</h4>
+                        <p class="author">Paulo Coelho</p>
+                        <p class="price">69.000đ</p>
+                        <div class="book-actions">
+                            <button class="add-to-cart" onclick="addToCart(1)">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Đắc Nhân Tâm -->
+                <div class="book-card">
+                    <div class="book-image">
+                        <a href="javascript:void(0);" onclick="viewBookDetail(2)">
+                            <img src="images/books/sach2.jpg" alt="Nhà Gỉả Kim" onerror="this.src='images/placeholder.jpg'">
+                        </a>
+                        <div class="book-overlay">
+                            <a href="javascript:void(0);" class="view-detail-btn" onclick="viewBookDetail(2)">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </a>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h4>Nhà Gỉả Kim</h4>
+                        <p class="author">Dale Carnegie</p>
+                        <p class="price">86.000đ</p>
+                        <div class="book-actions">
+                            <button class="add-to-cart" onclick="addToCart(2)">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Java Programming -->
+                <div class="book-card">
+                    <div class="book-image">
+                        <a href="javascript:void(0);" onclick="viewBookDetail(3)">
+                            <img src="images/books/sach3.jpg" alt="Java Programming" onerror="this.src='images/placeholder.jpg'">
+                        </a>
+                        <div class="book-overlay">
+                            <a href="javascript:void(0);" class="view-detail-btn" onclick="viewBookDetail(3)">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </a>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h4>Java Programming</h4>
+                        <p class="author">Oracle Press</p>
+                        <p class="price">250.000đ</p>
+                        <div class="book-actions">
+                            <button class="add-to-cart" onclick="addToCart(3)">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cách Nghĩ Để Thành Công -->
+                <div class="book-card">
+                    <div class="book-image">
+                        <a href="javascript:void(0);" onclick="viewBookDetail(4)">
+                            <img src="images/books/sach4.jpg" alt="C++" onerror="this.src='images/placeholder.jpg'">
+                        </a>
+                        <div class="book-overlay">
+                            <a href="javascript:void(0);" class="view-detail-btn" onclick="viewBookDetail(4)">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </a>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h4>C++</h4>
+                        <p class="author">Napoleon Hill</p>
+                        <p class="price">108.000đ</p>
+                        <div class="book-actions">
+                            <button class="add-to-cart" onclick="addToCart(4)">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Sellers Section -->
+        <section class="book-section">
+            <h3>Sách Bán Chạy</h3>
+            <div class="book-grid" id="bestSellersGrid">
+                <!-- Nhà Giả Kim -->
+                <div class="book-card">
+                    <div class="book-image">
+                        <a href="javascript:void(0);" onclick="viewBookDetail(1)">
+                            <img src="images/books/sach1.jpg" alt="Nhà Giả Kim" onerror="this.src='images/placeholder.jpg'">
+                        </a>
+                        <div class="book-overlay">
+                            <a href="javascript:void(0);" class="view-detail-btn" onclick="viewBookDetail(1)">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </a>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h4>Nhà Giả Kim</h4>
+                        <p class="author">Paulo Coelho</p>
+                        <p class="price">69.000đ</p>
+                        <div class="book-actions">
+                            <button class="add-to-cart" onclick="addToCart(1)">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Đắc Nhân Tâm -->
+                <div class="book-card">
+                    <div class="book-image">
+                        <a href="javascript:void(0);" onclick="viewBookDetail(2)">
+                            <img src="images/books/sach2.jpg" alt="Đắc Nhân Tâm" onerror="this.src='images/placeholder.jpg'">
+                        </a>
+                        <div class="book-overlay">
+                            <a href="javascript:void(0);" class="view-detail-btn" onclick="viewBookDetail(2)">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </a>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h4>Đắc Nhân Tâm</h4>
+                        <p class="author">Dale Carnegie</p>
+                        <p class="price">86.000đ</p>
+                        <div class="book-actions">
+                            <button class="add-to-cart" onclick="addToCart(2)">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Java Programming -->
+                <div class="book-card">
+                    <div class="book-image">
+                        <a href="javascript:void(0);" onclick="viewBookDetail(3)">
+                            <img src="images/books/sach3.jpg" alt="Java Programming" onerror="this.src='images/placeholder.jpg'">
+                        </a>
+                        <div class="book-overlay">
+                            <a href="javascript:void(0);" class="view-detail-btn" onclick="viewBookDetail(3)">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </a>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h4>Java Programming</h4>
+                        <p class="author">Oracle Press</p>
+                        <p class="price">250.000đ</p>
+                        <div class="book-actions">
+                            <button class="add-to-cart" onclick="addToCart(3)">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cách Nghĩ Để Thành Công -->
+                <div class="book-card">
+                    <div class="book-image">
+                        <a href="javascript:void(0);" onclick="viewBookDetail(4)">
+                            <img src="images/books/sach4.jpg" alt="Cách Nghĩ Để Thành Công" onerror="this.src='images/placeholder.jpg'">
+                        </a>
+                        <div class="book-overlay">
+                            <a href="javascript:void(0);" class="view-detail-btn" onclick="viewBookDetail(4)">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </a>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h4>Cách Nghĩ Để Thành Công</h4>
+                        <p class="author">Napoleon Hill</p>
+                        <p class="price">108.000đ</p>
+                        <div class="book-actions">
+                            <button class="add-to-cart" onclick="addToCart(4)">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Về SmartBook</h4>
+                <p>Nhà sách trực tuyến hàng đầu về sách học tập</p>
+            </div>
+            <div class="footer-section">
+                <h4>Liên Hệ</h4>
+                <p>Email: contact@smartbook.com</p>
+                <p>Điện thoại: 1900-xxxx</p>
+            </div>
+            <div class="footer-section">
+                <h4>Theo Dõi</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SmartBook. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="js/books.js"></script>
+    <script src="js/buy-now.js"></script>
+    <script src="js/customer.js"></script>
+</body>
+</html> 

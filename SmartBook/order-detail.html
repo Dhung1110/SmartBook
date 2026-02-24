@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Đơn Hàng - SmartBook</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/order.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="customer-dashboard.html">
+                    <div class="logo-icon"></div>
+                    <h1>Smart<span>Book</span></h1>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="customer-dashboard.html">
+                    <i class="fas fa-arrow-left"></i> Quay lại trang chủ
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="order-container">
+            <div class="order-header">
+                <div class="order-status">
+                    <h2>Chi Tiết Đơn Hàng</h2>
+                    <span id="orderStatus" class="status-badge"></span>
+                </div>
+                <div class="order-info">
+                    <p id="orderId"></p>
+                    <p id="orderDate"></p>
+                </div>
+            </div>
+
+            <div class="order-progress">
+                <div class="progress-step" data-step="pending">
+                    <div class="step-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="step-label">Đặt hàng</div>
+                </div>
+                <div class="progress-step" data-step="confirmed">
+                    <div class="step-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="step-label">Xác nhận</div>
+                </div>
+                <div class="progress-step" data-step="shipping">
+                    <div class="step-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="step-label">Đang giao</div>
+                </div>
+                <div class="progress-step" data-step="delivered">
+                    <div class="step-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <div class="step-label">Đã giao</div>
+                </div>
+            </div>
+
+            <div class="order-sections">
+                <div class="order-section">
+                    <h3>Thông Tin Giao Hàng</h3>
+                    <div id="shippingInfo">
+                        <!-- Sẽ được điền bởi JavaScript -->
+                    </div>
+                </div>
+
+                <div class="order-section">
+                    <h3>Phương Thức Thanh Toán</h3>
+                    <div id="paymentInfo">
+                        <!-- Sẽ được điền bởi JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-items">
+                <h3>Sản Phẩm Đã Mua</h3>
+                <div id="itemsList">
+                    <!-- Sẽ được điền bởi JavaScript -->
+                </div>
+            </div>
+
+          
+
+            <div class="order-actions">
+                <button id="viewInvoice" class="action-btn invoice-btn" style="display: none;">
+                    <i class="fas fa-file-invoice"></i>
+                    Xem hóa đơn
+                </button>
+                <button id="backToOrders" class="action-btn back-btn" onclick="window.location.href='orders.html'">
+                    <i class="fas fa-arrow-left"></i>
+                    Quay lại danh sách đơn hàng
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Về SmartBook</h4>
+                <p>Nhà sách trực tuyến hàng đầu về sách học tập</p>
+            </div>
+            <div class="footer-section">
+                <h4>Liên Hệ</h4>
+                <p>Email: contact@smartbook.com</p>
+                <p>Điện thoại: 1900-xxxx</p>
+            </div>
+            <div class="footer-section">
+                <h4>Theo Dõi</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SmartBook. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="js/order-detail.js"></script>
+</body>
+</html> 

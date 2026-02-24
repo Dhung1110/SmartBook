@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sách - SmartBook</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/book-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="customer-dashboard.html">
+                    <div class="logo-icon"></div>
+                    <h1>Smart<span>Book</span></h1>
+                </a>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm sách...">
+                <button title="Tìm kiếm"><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="nav-links">
+                <a href="customer-dashboard.html">
+                    <i class="fas fa-arrow-left"></i> Quay về trang chủ
+                </a>
+                
+                <a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+
+              
+
+                <!-- Phần hiển thị khi đã đăng nhập -->
+                <div class="user-links">
+                    <div class="user-greeting">
+                        <span>Xin chào</span>
+                       
+                        <div class="user-dropdown">
+                            <div class="customer-menu">
+                                
+                                <a href="orders.html" class="dashboard-item">
+                                    <i class="fas fa-shopping-bag"></i> Đơn hàng
+                                </a>
+                            </div>
+                            <a href="#" class="logout-button">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="book-detail-container">
+        <div class="book-detail-wrapper">
+            <div class="book-detail-header">
+                <h2 id="bookTitle">Đang tải thông tin sách...</h2>
+                <div class="book-detail-navigation">
+                    <a href="customer-dashboard.html">Trang chủ</a> / 
+                    <span id="bookCategory">Danh mục</span> / 
+                    <span id="bookTitleNav">Chi tiết sách</span>
+                </div>
+            </div>
+
+            <div class="book-detail-content">
+                <div class="book-detail-image">
+                    <img id="bookImage" src="images/placeholder.jpg" alt="Hình ảnh sách">
+                </div>
+                <div class="book-detail-info">
+                    <h1 id="bookTitleDetail">Đang tải...</h1>
+                    <div class="book-meta">
+                        <p>Tác giả: <span id="bookAuthor">Đang tải...</span></p>
+                        <p>Thể loại: <span id="bookCategoryDetail">Đang tải...</span></p>
+                        <p>Năm xuất bản: <span id="bookYear">Đang tải...</span></p>
+                    </div>
+                    <div class="book-price">
+                        <span id="bookPrice" class="current-price">0đ</span>
+                        <span id="bookOriginalPrice" class="original-price">0đ</span>
+                        <span id="bookDiscount" class="discount-badge">-0%</span>
+                    </div>
+                    <div class="book-quantity">
+                        <label for="quantity">Số lượng:</label>
+                        <div class="quantity-control">
+                            <button id="decreaseQuantity" type="button">-</button>
+                            <input type="number" id="quantity" value="1" min="1" max="99">
+                            <button id="increaseQuantity" type="button">+</button>
+                        </div>
+                    </div>
+                    <div class="book-actions">
+                        <button id="addToCart" class="add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng
+                        </button>
+                        <button id="buyNow" class="buy-now">
+                            <i class="fas fa-bolt"></i> Mua ngay
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-tabs">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="description">Mô tả</button>
+                    <button class="tab-btn" data-tab="details">Thông tin chi tiết</button>
+                    <button class="tab-btn" data-tab="reviews">Đánh giá</button>
+                </div>
+                <div class="tabs-content">
+                    <div id="description" class="tab-content active">
+                        <div id="bookDescription">Đang tải nội dung mô tả...</div>
+                    </div>
+                    <div id="details" class="tab-content">
+                        <div class="book-details-table">
+                            <div class="detail-row">
+                                <div class="detail-label">Số trang</div>
+                                <div id="bookPages" class="detail-value">Đang tải...</div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">Kích thước</div>
+                                <div id="bookSize" class="detail-value">Đang tải...</div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">Nhà xuất bản</div>
+                                <div id="bookPublisher" class="detail-value">Đang tải...</div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">Ngôn ngữ</div>
+                                <div id="bookLanguage" class="detail-value">Đang tải...</div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">ISBN</div>
+                                <div id="bookISBN" class="detail-value">Đang tải...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="reviews" class="tab-content">
+                        <div class="reviews-summary">
+                            <div class="average-rating">
+                                <div class="rating-number" id="avgRating">0.0</div>
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="rating-count" id="ratingCount">0 đánh giá</div>
+                            </div>
+                            <div class="rating-bars">
+                                <div class="rating-bar-item">
+                                    <span class="rating-label">5 <i class="fas fa-star"></i></span>
+                                    <div class="rating-bar">
+                                        <div class="rating-fill" id="rating5" style="width: 0%"></div>
+                                    </div>
+                                    <span class="rating-percent" id="rating5Percent">0%</span>
+                                </div>
+                                <div class="rating-bar-item">
+                                    <span class="rating-label">4 <i class="fas fa-star"></i></span>
+                                    <div class="rating-bar">
+                                        <div class="rating-fill" id="rating4" style="width: 0%"></div>
+                                    </div>
+                                    <span class="rating-percent" id="rating4Percent">0%</span>
+                                </div>
+                                <div class="rating-bar-item">
+                                    <span class="rating-label">3 <i class="fas fa-star"></i></span>
+                                    <div class="rating-bar">
+                                        <div class="rating-fill" id="rating3" style="width: 0%"></div>
+                                    </div>
+                                    <span class="rating-percent" id="rating3Percent">0%</span>
+                                </div>
+                                <div class="rating-bar-item">
+                                    <span class="rating-label">2 <i class="fas fa-star"></i></span>
+                                    <div class="rating-bar">
+                                        <div class="rating-fill" id="rating2" style="width: 0%"></div>
+                                    </div>
+                                    <span class="rating-percent" id="rating2Percent">0%</span>
+                                </div>
+                                <div class="rating-bar-item">
+                                    <span class="rating-label">1 <i class="fas fa-star"></i></span>
+                                    <div class="rating-bar">
+                                        <div class="rating-fill" id="rating1" style="width: 0%"></div>
+                                    </div>
+                                    <span class="rating-percent" id="rating1Percent">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reviews-list" id="reviewsList">
+                            <div class="review-empty">Chưa có đánh giá nào cho sách này.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="related-books">
+                <h3>Sách liên quan</h3>
+                <div class="related-books-slider" id="relatedBooks">
+                    <!-- Sẽ được điền bởi JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Về SmartBook</h4>
+                <p>Nhà sách trực tuyến hàng đầu về sách học tập</p>
+            </div>
+            <div class="footer-section">
+                <h4>Liên Hệ</h4>
+                <p>Email: contact@smartbook.com</p>
+                <p>Điện thoại: 1900-xxxx</p>
+            </div>
+            <div class="footer-section">
+                <h4>Theo Dõi</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SmartBook. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="js/books.js"></script>
+    <script src="js/book-detail.js"></script>
+</body>
+</html> 

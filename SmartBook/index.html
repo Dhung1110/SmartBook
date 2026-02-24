@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartBook - Trang chủ</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-icon"></div>
+                    <h1>Smart<span>Book</span></h1>
+                </a>
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html" class="active">Trang chủ</a>
+                
+                <div class="auth-buttons">
+                    <a href="login.html" class="login-btn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Đăng nhập
+                    </a>
+                    <a href="register.html" class="register-btn">
+                        <i class="fas fa-user-plus"></i>
+                        Đăng ký
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Chào mừng đến với SmartBook</h2>
+                    <p class="hero-subtitle">Khám phá kho tàng tri thức với hơn 1000+ đầu sách</p>
+                    <div class="hero-features">
+                        <div class="feature">
+                            <i class="fas fa-book"></i>
+                            <span>Sách chất lượng</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-tags"></i>
+                            <span>Giá cả hợp lý</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Giao hàng nhanh</span>
+                        </div>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="register.html" class="cta-button primary">
+                            <i class="fas fa-user-plus"></i>
+                            Đăng ký ngay
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-images">
+                    <div class="book-stack">
+                        <img src="images/books/sach1.jpg" alt="Sách nổi bật 1" class="book-img book1">
+                        <img src="images/books/sach2.jpg" alt="Sách nổi bật 2" class="book-img book2">
+                        <img src="images/books/sach3.jpg" alt="Sách nổi bật 3" class="book-img book3">
+                        <img src="images/books/sach4.jpg" alt="Sách nổi bật 4" class="book-img book4">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions Menu -->
+        <div class="quick-actions">
+            <div class="quick-action-btn cart login-required-action" data-login-msg="Đăng nhập để xem giỏ hàng">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="quick-action-tooltip">Giỏ hàng</span>
+            </div>
+            <div class="quick-action-btn wishlist login-required-action" data-login-msg="Đăng nhập để xem danh sách yêu thích">
+                <i class="fas fa-heart"></i>
+                <span class="quick-action-tooltip">Yêu thích</span>
+            </div>
+            <div class="quick-action-btn login-required-action" data-login-msg="Đăng nhập để xem đơn hàng">
+                <i class="fas fa-box"></i>
+                <span class="quick-action-tooltip">Đơn hàng</span>
+            </div>
+        </div>
+
+        <!-- Login Prompt Modal -->
+        <div class="login-prompt-overlay"></div>
+        <div class="login-prompt">
+            <h4>Đăng nhập để tiếp tục</h4>
+            <p>Bạn cần đăng nhập để thực hiện thao tác này</p>
+            <div class="login-prompt-actions">
+                <a href="login.html" class="login-prompt-btn primary">Đăng nhập</a>
+                <a href="register.html" class="login-prompt-btn secondary">Đăng ký</a>
+            </div>
+        </div>
+
+        <!-- Featured Categories -->
+        <section class="featured-categories">
+            <h3>Danh Mục Nổi Bật</h3>
+            <div class="category-grid">
+                <div class="category-card login-required-action" data-login-msg="Đăng nhập để xem chi tiết">
+                    <img src="images/books/sach1.jpg" alt="Sách Kỹ Năng">
+                    <h4>Sách Kỹ Năng</h4>
+                    <p>Phát triển bản thân</p>
+                    <div class="category-action">Xem thêm</div>
+                </div>
+                <div class="category-card">
+                    <img src="images/books/sach2.jpg" alt="Sách Tư Tưởng">
+                    <h4>Sách Tư Tưởng</h4>
+                    <p>Kiến thức cơ bản</p>
+                </div>
+                <div class="category-card">
+                    <img src="images/books/sach3.jpg" alt="Sách Công Nghệ">
+                    <h4>Sách Công Nghệ</h4>
+                    <p>Xu hướng mới nhất</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="why-choose-us">
+            <h3>Tại Sao Chọn SmartBook?</h3>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-book-reader"></i>
+                    <h4>Đa dạng sách</h4>
+                    <p>Hơn 1000+ đầu sách từ nhiều lĩnh vực</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-tags"></i>
+                    <h4>Giá tốt nhất</h4>
+                    <p>Cam kết giá cạnh tranh trên thị trường</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h4>Giao hàng nhanh</h4>
+                    <p>Giao hàng trong 24h nội thành</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-headset"></i>
+                    <h4>Hỗ trợ 24/7</h4>
+                    <p>Đội ngũ tư vấn nhiệt tình</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Books -->
+        <section class="featured-books">
+            <h3>Sách Nổi Bật</h3>
+            <div class="book-grid">
+                <div class="book-card preview login-required-action" data-login-msg="Đăng nhập để mua hàng">
+                    <div class="book-image">
+                        <img src="images/books/sach1.jpg" alt="Đắc Nhân Tâm">
+                        <div class="book-overlay">
+                            <div class="book-preview-actions">
+                                <div class="preview-action-btn">
+                                    <i class="fas fa-heart"></i> Yêu thích
+                                </div>
+                                <div class="preview-action-btn">
+                                    <i class="fas fa-cart-plus"></i> Thêm vào giỏ
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h4>Đắc Nhân Tâm</h4>
+                        <p class="author">Dale Carnegie</p>
+                        <p class="price">86.000đ</p>
+                    </div>
+                </div>
+                <div class="book-card preview login-required-action" data-login-msg="Đăng nhập để mua hàng">
+                    <div class="book-image">
+                        <img src="images/books/sach2.jpg" alt="Nhà Giả Kim">
+                        <div class="book-overlay">
+                            <div class="book-preview-actions">
+                                <div class="preview-action-btn">
+                                    <i class="fas fa-heart"></i> Yêu thích
+                                </div>
+                                <div class="preview-action-btn">
+                                    <i class="fas fa-cart-plus"></i> Thêm vào giỏ
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h4>Nhà Giả Kim</h4>
+                        <p class="author">Paulo Coelho</p>
+                        <p class="price">69.000đ</p>
+                    </div>
+                </div>
+                <div class="book-card preview login-required-action" data-login-msg="Đăng nhập để mua hàng">
+                    <div class="book-image">
+                        <img src="images/books/sach3.jpg" alt="Sách Java">
+                        <div class="book-overlay">
+                            <div class="book-preview-actions">
+                                <div class="preview-action-btn">
+                                    <i class="fas fa-heart"></i> Yêu thích
+                                </div>
+                                <div class="preview-action-btn">
+                                    <i class="fas fa-cart-plus"></i> Thêm vào giỏ
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h4>Java Programming</h4>
+                        <p class="author">Oracle Press</p>
+                        <p class="price">250.000đ</p>
+                    </div>
+                </div>
+                <div class="book-card preview login-required-action" data-login-msg="Đăng nhập để mua hàng">
+                    <div class="book-image">
+                        <img src="images/books/sach4.jpg" alt="Cách Nghĩ Để Thành Công">
+                        <div class="book-overlay">
+                            <div class="book-preview-actions">
+                                <div class="preview-action-btn">
+                                    <i class="fas fa-heart"></i> Yêu thích
+                                </div>
+                                <div class="preview-action-btn">
+                                    <i class="fas fa-cart-plus"></i> Thêm vào giỏ
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h4>Sách Lập Trình</h4>
+                        <p class="author">Napoleon Hill</p>
+                        <p class="price">108.000đ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Về SmartBook</h4>
+                <p>Nhà sách trực tuyến hàng đầu về sách học tập và phát triển bản thân</p>
+            </div>
+            <div class="footer-section">
+                <h4>Liên Hệ</h4>
+                <p><i class="fas fa-envelope"></i> contact@smartbook.com</p>
+                <p><i class="fas fa-phone"></i> 1900-xxxx</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận XYZ, TP.HCM</p>
+            </div>
+            <div class="footer-section">
+                <h4>Theo Dõi</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SmartBook. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script>
+    // JavaScript để xử lý các thao tác yêu cầu đăng nhập
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginRequiredActions = document.querySelectorAll('.login-required-action');
+        const loginPrompt = document.querySelector('.login-prompt');
+        const loginPromptOverlay = document.querySelector('.login-prompt-overlay');
+
+        loginRequiredActions.forEach(action => {
+            action.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginPrompt.classList.add('show');
+                loginPromptOverlay.classList.add('show');
+            });
+        });
+
+        loginPromptOverlay.addEventListener('click', function() {
+            loginPrompt.classList.remove('show');
+            loginPromptOverlay.classList.remove('show');
+        });
+
+        // Hiển thị tên người dùng
+        const userNameElement = document.getElementById('customerName');
+        if (userNameElement) {
+            userNameElement.textContent = currentUser.fullname;
+        }
+
+        // Ẩn guest links và hiển thị user links
+        document.querySelector('.guest-links').style.display = 'none';
+        document.querySelector('.user-links').style.display = 'block';
+
+        const userData = JSON.parse(localStorage.getItem('userData') || sessionStorage.getItem('userData'));
+        if (!userData) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Vui lòng đăng nhập',
+                text: 'Bạn cần đăng nhập để sử dụng các chức năng',
+                confirmButtonText: 'Đăng nhập ngay'
+            }).then(() => {
+                window.location.href = 'login.html';
+            });
+            return;
+        }
+    });
+
+    function displayUserInfo(userData) {
+        const userInfoElement = document.querySelector('.user-info');
+        if (userInfoElement) {
+            userInfoElement.innerHTML = `
+                <span class="welcome-text">Xin chào, ${userData.fullName}</span>
+                <button onclick="logout()" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </button>
+            `;
+        }
+    }
+
+    function logout() {
+        localStorage.removeItem('userData');
+        sessionStorage.removeItem('userData');
+        window.location.href = 'login.html';
+    }
+    </script>
+
+    <div class="user-links" style="display: none;">
+        <div class="user-greeting">
+            <span>Xin chào, </span>
+            <span class="username-display" id="customerName">Khách hàng</span>
+            ...
+        </div>
+    </div>
+</body>
+</html> 

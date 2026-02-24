@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập Cửa Hàng - SmartBook</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    
+
+    <div class="auth-container">
+        <form id="staffLoginForm" class="auth-form">
+            <div class="auth-header">
+                <img src="images/logo.png" alt="SmartBook Logo" class="auth-logo">
+                <h2>Đăng Nhập Cửa Hàng</h2>
+                <p class="form-description">Vui lòng đăng nhập để truy cập hệ thống</p>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Tên đăng nhập</label>
+                <div class="input-icon">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" name="username" required placeholder="Nhập tên đăng nhập">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <div class="input-icon password-input">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" required placeholder="Nhập mật khẩu">
+                    <i class="fas fa-eye-slash toggle-password"></i>
+                </div>
+            </div>
+
+            <div class="form-options">
+                <label class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <span class="checkmark"></span>
+                    Ghi nhớ đăng nhập
+                </label>
+            </div>
+
+            <button type="submit" class="auth-button">
+                <span>Đăng Nhập</span>
+                <i class="fas fa-sign-in-alt"></i>
+            </button>
+        </form>
+    </div>
+
+    <script src="js/staff-login.js"></script>
+</body>
+</html> 

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhân Viên - SmartBook</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Thêm SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Thêm CSS cho modal hồ sơ -->
+    <style>
+        /* CSS cho modal hồ sơ nhân viên */
+        .profile-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow: auto;
+        }
+        
+        .profile-modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 25px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        @keyframes modalFadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .close-modal:hover {
+            color: #333;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 3px solid #2196F3;
+        }
+        
+        .profile-title h2 {
+            margin: 0 0 5px 0;
+            color: #2196F3;
+        }
+        
+        .profile-title p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .profile-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .info-group {
+            margin-bottom: 15px;
+        }
+        
+        .info-label {
+            display: block;
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .info-value {
+            color: #333;
+            font-weight: 500;
+            font-size: 1.05em;
+        }
+        
+        .edit-profile-btn {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+        
+        .edit-profile-btn:hover {
+            background-color: #0d8bf0;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="images/logo.png" alt="SmartBook Logo" class="dashboard-logo">
+                <h3>SmartBook</h3>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="#dashboard"><i class="fas fa-home"></i>Tổng quan</a>
+                    </li>
+                    <li>
+                        <a href="#orders"><i class="fas fa-shopping-cart"></i>Quản lý sản phẩm</a>
+                    </li>
+                    <li>
+                        <a href="#inventory"><i class="fas fa-box"></i>Quản lý đơn hàng</a>
+                    </li>
+                   
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Navigation -->
+            <div class="top-nav">
+                <div class="nav-left">
+                    <button id="toggleSidebar" class="toggle-btn" title="Ẩn/Hiện thanh bên">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h2>Dashboard</h2>
+                </div>
+                <div class="nav-right">
+                    <div class="user-info">
+                        <img src="images\nv.jpg" alt="User Avatar" class="avatar">
+                        <div class="user-details">
+                            <span class="user-name">Nhân viên</span>
+                            <span class="user-role">Staff</span>
+                        </div>
+                        <div class="user-menu">
+                            <button id="userMenuBtn" title="Menu người dùng">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="#" id="viewProfileBtn"><i class="fas fa-user"></i>Hồ sơ</a>
+                                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Quick Stats -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #4CAF50;">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Đơn hàng đã xử lý</h3>
+                            <p class="stat-number">15</p>
+                            <span class="stat-change positive">Hôm nay</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #FF9800;">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Đơn chờ xử lý</h3>
+                            <p class="stat-number">8</p>
+                            <span class="stat-change">Cần xử lý</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #2196F3;">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Sản phẩm đã giao</h3>
+                            <p class="stat-number">45</p>
+                            <span class="stat-change positive">Hôm nay</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="content-section" id="dashboard-section">
+                    <div class="section-header">
+                        <h3>Đơn hàng cần xử lý</h3>
+                        <a href="#all-orders" class="view-all">Xem tất cả</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn</th>
+                                    <th>Khách hàng</th>
+                                    <th>Sản phẩm</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#ORD001</td>
+                                    <td>Nguyễn Văn A</td>
+                                    <td>Đắc Nhân Tâm x2</td>
+                                    <td>320,000đ</td>
+                                    <td><span class="status-badge pending">Chờ xử lý</span></td>
+                                    <td>
+                                        <button class="action-btn" title="Xem chi tiết"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn" title="Xử lý đơn hàng"><i class="fas fa-check"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Thêm các dòng khác tương tự -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Quản lý sản phẩm -->
+                <div class="content-section" id="orders-section" style="display: none;">
+                    <div class="section-header">
+                        <h3>Quản lý sản phẩm</h3>
+                        <div class="search-container">
+                            <input type="text" id="productSearchInput" placeholder="Tìm kiếm sản phẩm...">
+                            <button id="productSearchBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table" id="productsTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Ảnh</th>
+                                    <th>Tên sách</th>
+                                    <th>Tác giả</th>
+                                    <th>Danh mục</th>
+                                    <th>Giá gốc</th>
+                                    <th>Giảm giá</th>
+                                    <th>Giá bán</th>
+                                    <th>Tồn kho</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Dữ liệu sách sẽ được thêm vào đây bằng JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination-container" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 10px; background: #f5f5f5; border-radius: 8px;">
+                        <div class="pagination" style="display: flex; align-items: center; gap: 15px;">
+                            <button class="pagination-btn" id="prevPage" disabled style="padding: 8px 15px; border: none; background: #2196F3; color: white; border-radius: 4px; cursor: pointer; opacity: 0.7;"><i class="fas fa-chevron-left"></i></button>
+                            <span class="pagination-info" style="font-size: 14px;">Trang <span id="currentPage" style="font-weight: bold; color: #2196F3;">1</span> / <span id="totalPages" style="font-weight: bold;">1</span></span>
+                            <button class="pagination-btn" id="nextPage" style="padding: 8px 15px; border: none; background: #2196F3; color: white; border-radius: 4px; cursor: pointer;"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="items-per-page" style="display: flex; align-items: center; gap: 10px;">
+                            <label for="itemsPerPage" style="font-size: 14px; color: #666;">Số sản phẩm/trang:</label>
+                            <select id="itemsPerPage" style="padding: 6px 10px; border: 1px solid #ddd; border-radius: 4px; outline: none;">
+                                <option value="5">5</option>
+                                <option value="10" selected>10</option>
+                                <option value="20">20</option>
+                            </select>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+                <!-- Quản lý đơn hàng -->
+                <div class="content-section" id="inventory-section" style="display: none;">
+                    <div class="section-header">
+                        <h3>Quản lý đơn hàng</h3>
+                        <div class="search-container">
+                            <input type="text" id="orderSearchInput" placeholder="Tìm kiếm đơn hàng...">
+                            <button id="orderSearchBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="orderTable" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn</th>
+                                    <th>Khách hàng</th>
+                                    <th>Ngày đặt</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Dữ liệu đơn hàng sẽ được thêm vào đây bằng JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="pagination-container" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <div class="pagination" style="display: flex; align-items: center; gap: 15px;">
+                            <button class="pagination-btn" id="orderPrevPage" disabled style="padding: 8px 15px; border: none; background: #2196F3; color: white; border-radius: 4px; cursor: pointer; transition: all 0.3s ease; opacity: 0.7;"><i class="fas fa-chevron-left"></i></button>
+                            <span class="pagination-info" style="font-size: 14px;">Trang <span id="orderCurrentPage" style="font-weight: bold; color: #2196F3;">1</span> / <span id="orderTotalPages" style="font-weight: bold;">1</span></span>
+                            <button class="pagination-btn" id="orderNextPage" style="padding: 8px 15px; border: none; background: #2196F3; color: white; border-radius: 4px; cursor: pointer; transition: all 0.3s ease;"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="items-per-page" style="display: flex; align-items: center; gap: 10px;">
+                            <label for="orderItemsPerPage" style="font-size: 14px; color: #666;">Số đơn hàng/trang:</label>
+                            <select id="orderItemsPerPage" style="padding: 6px 10px; border: 1px solid #e0e0e0; border-radius: 4px; outline: none; cursor: pointer;">
+                                <option value="5">5</option>
+                                <option value="10" selected>10</option>
+                                <option value="20">20</option>
+                            </select>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thêm Modal Hồ sơ Nhân viên -->
+    <div id="profileModal" class="profile-modal">
+        <div class="profile-modal-content">
+            <span class="close-modal" id="closeProfileModal">&times;</span>
+            
+            <div class="profile-header">
+                <img src="images/nv.jpg" alt="Avatar" class="profile-avatar" id="profileAvatar">
+                <div class="profile-title">
+                    <h2 id="profileName">Trần Văn Nhân Viên</h2>
+                    <p id="profileRole">Nhân viên bán hàng</p>
+                </div>
+            </div>
+            
+            <div class="profile-content">
+                <div class="profile-info">
+                    <div class="info-group">
+                        <span class="info-label">Tên đăng nhập</span>
+                        <span class="info-value" id="profileUsername">nhanvien1</span>
+                    </div>
+                    
+                    <div class="info-group">
+                        <span class="info-label">Email</span>
+                        <span class="info-value" id="profileEmail">nhanvien@smartbook.com</span>
+                    </div>
+                    
+                    <div class="info-group">
+                        <span class="info-label">Số điện thoại</span>
+                        <span class="info-value" id="profilePhone">0987654321</span>
+                    </div>
+                    
+                    <div class="info-group">
+                        <span class="info-label">Ngày tham gia</span>
+                        <span class="info-value" id="profileJoinDate">01/01/2023</span>
+                    </div>
+                    
+                    <div class="info-group">
+                        <span class="info-label">Số đơn hàng đã xử lý</span>
+                        <span class="info-value" id="profileOrdersProcessed">127</span>
+                    </div>
+                    
+                    <div class="info-group">
+                        <span class="info-label">Hiệu suất</span>
+                        <span class="info-value" id="profilePerformance">Rất tốt</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="edit-profile-btn" id="editProfileBtn">Chỉnh sửa hồ sơ</button>
+        </div>
+    </div>
+
+    <script src="js/staff-dashboard.js"></script>
+</body>
+</html> 

@@ -1,0 +1,841 @@
+/* Biến màu sắc */
+:root {
+    --primary-blue: #3498db;
+    --primary-red: #e74c3c;
+    --dark-blue: #2980b9;
+    --dark-red: #c0392b;
+    --light-blue: rgba(52, 152, 219, 0.1);
+    --light-red: rgba(231, 76, 60, 0.1);
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+    --border-color: #ecf0f1;
+    --white: #ffffff;
+}
+
+/* Container chính */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-red));
+    padding: 20px;
+}
+
+/* Form đăng ký/đăng nhập */
+.auth-form {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+}
+
+/* Tiêu đề form */
+.auth-form h2 {
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 28px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.auth-form h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-blue), var(--primary-red));
+    border-radius: 3px;
+}
+
+/* Mô tả form */
+.form-description {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+/* Nhóm form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Label */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 15px;
+}
+
+/* Input fields */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-blue);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--light-blue);
+}
+
+/* Password input container */
+.password-input {
+    position: relative;
+}
+
+/* Icon hiện/ẩn mật khẩu */
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+    color: var(--primary-blue);
+}
+
+/* Nút đăng ký/đăng nhập */
+.auth-button {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: all 0.6s ease;
+}
+
+.auth-button:hover {
+    background: var(--dark-blue);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+.auth-button:hover::before {
+    left: 100%;
+}
+
+/* Links phụ */
+.auth-links {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.auth-links p {
+    color: var(--text-light);
+    font-size: 15px;
+}
+
+.auth-links a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.auth-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--primary-blue);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.auth-links a:hover {
+    color: var(--dark-blue);
+}
+
+.auth-links a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Loading Spinner cho nút */
+.auth-button.loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+}
+
+.auth-button.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Hiệu ứng disabled cho form khi đang xử lý */
+.auth-form.processing {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.auth-form.processing input,
+.auth-form.processing button {
+    background-color: #f5f5f5;
+}
+
+/* Thông báo xử lý */
+.processing-message {
+    display: none;
+    text-align: center;
+    color: #666;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.auth-form.processing .processing-message {
+    display: block;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* Thông báo lỗi */
+.error-message {
+    color: var(--primary-red);
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.form-group.error input,
+.form-group.error textarea {
+    border-color: var(--primary-red);
+    background-color: var(--light-red);
+}
+
+.form-group.error .error-message {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .auth-form {
+        padding: 30px 20px;
+    }
+
+    .auth-form h2 {
+        font-size: 24px;
+    }
+
+    .form-description {
+        font-size: 14px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .auth-button {
+        padding: 12px;
+        font-size: 15px;
+    }
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.auth-form {
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Auth Header */
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Social Login Buttons */
+.social-login {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.social-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-btn i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.social-btn.google {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.social-btn.facebook {
+    background-color: #1877f2;
+    color: white;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Divider */
+.divider {
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: calc(50% - 30px);
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+.divider span {
+    background-color: white;
+    padding: 0 15px;
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+/* Input with Icons */
+.input-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon i:not(.toggle-password) {
+    position: absolute;
+    left: 15px;
+    color: var(--text-light);
+    font-size: 16px;
+}
+
+.input-icon input {
+    padding-left: 45px;
+}
+
+/* Remember Me Checkbox */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.remember-me input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    margin-right: 8px;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.remember-me input[type="checkbox"]:checked + .checkmark {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+.remember-me input[type="checkbox"]:checked + .checkmark::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+}
+
+/* Forgot Password Link */
+.forgot-password {
+    color: var(--primary-red);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: var(--dark-red);
+}
+
+/* Login Button with Icon */
+.auth-button i {
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.auth-button:hover i {
+    transform: translateX(5px);
+}
+
+/* Error State for Social Buttons */
+.social-btn.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.social-btn.disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Thông báo chuyển tiếp */
+.redirect-message {
+    text-align: center;
+    margin-top: 15px;
+    color: #666;
+    font-size: 14px;
+    animation: fadeIn 0.5s ease;
+}
+
+.redirect-message span {
+    color: #28a745;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Animation cho nút khi thành công */
+.auth-button.success {
+    background-color: #28a745 !important;
+    transform: scale(1.02);
+}
+
+.auth-button.success i {
+    animation: checkmark 0.5s ease-in-out;
+}
+
+@keyframes checkmark {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Thông báo popup */
+.notification-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1000;
+    animation: slideIn 0.5s ease;
+    max-width: 400px;
+    min-width: 300px;
+}
+
+.notification-popup.success {
+    border-left: 4px solid #28a745;
+}
+
+.notification-popup.error {
+    border-left: 4px solid #dc3545;
+}
+
+.notification-popup i {
+    font-size: 20px;
+}
+
+.notification-popup.success i {
+    color: #28a745;
+}
+
+.notification-popup.error i {
+    color: #dc3545;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-title {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+    font-size: 16px;
+}
+
+.notification-message {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.notification-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #eee;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+}
+
+.notification-progress-bar {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right, #28a745, #34d058);
+    animation: progress 3s linear;
+}
+
+.notification-popup.error .notification-progress-bar {
+    background: linear-gradient(to right, #dc3545, #ff4d5a);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes progress {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+/* Hiệu ứng nút khi thành công */
+.auth-button.success {
+    background-color: #28a745 !important;
+    transform: scale(1.02);
+}
+
+.auth-button.error {
+    background-color: #dc3545 !important;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Hiệu ứng rung form khi lỗi */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.auth-form.shake {
+    animation: shake 0.6s ease-in-out;
+}
+
+/* Input khi có lỗi */
+.error-input {
+    border-color: #dc3545 !important;
+    background-color: rgba(220, 53, 69, 0.05) !important;
+    animation: errorPulse 1.5s infinite;
+}
+
+@keyframes errorPulse {
+    0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4); }
+    70% { box-shadow: 0 0 0 6px rgba(220, 53, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+}
+
+/* Icon loading */
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+/* Hiệu ứng nút khi thành công/lỗi */
+.auth-button.success {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+.auth-button.error {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    animation: shake 0.5s ease-in-out;
+}
+
+.auth-button:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+
+/* Hiệu ứng hover cho nút */
+.auth-button:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Thông báo popup cải tiến */
+.notification-popup {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    padding: 16px 24px;
+}
+
+.notification-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.notification-message {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Progress bar animation */
+.notification-progress-bar {
+    background: linear-gradient(to right, 
+        var(--primary-blue), 
+        var(--primary-red)
+    );
+    background-size: 200% 100%;
+    animation: 
+        progress 3s linear,
+        gradient 2s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.back-to-home {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-home .icon-wrapper {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.back-to-home .icon-wrapper i {
+    font-size: 18px;
+    color: #2196F3;
+    transition: all 0.3s ease;
+}
+
+.back-to-home .text {
+    margin-left: 10px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.back-to-home:hover .icon-wrapper {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.back-to-home:hover .text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .back-to-home {
+        top: 15px;
+        left: 15px;
+    }
+    
+    .back-to-home .icon-wrapper {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .back-to-home .icon-wrapper i {
+        font-size: 16px;
+    }
+} 

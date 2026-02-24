@@ -1,0 +1,501 @@
+/* Book Detail Styles */
+.book-detail-container {
+    margin-top: 80px;
+    padding: 2rem 5%;
+}
+
+.book-detail-wrapper {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.book-detail-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.book-detail-header h2 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.book-detail-navigation {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.book-detail-navigation a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.book-detail-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.book-detail-image {
+    background: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.book-detail-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.book-detail-image:hover img {
+    transform: scale(1.05);
+}
+
+.book-detail-info h1 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.book-meta {
+    margin-bottom: 1.5rem;
+}
+
+.book-meta p {
+    margin: 0.5rem 0;
+    color: #7f8c8d;
+}
+
+.book-meta span {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.book-price {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.current-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #e74c3c;
+}
+
+.original-price {
+    font-size: 1.2rem;
+    color: #95a5a6;
+    text-decoration: line-through;
+}
+
+.discount-badge {
+    background: #e74c3c;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.book-quantity {
+    margin-bottom: 1.5rem;
+}
+
+.book-quantity label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.quantity-control button {
+    width: 40px;
+    height: 40px;
+    background: #f8f9fa;
+    border: none;
+    color: #2c3e50;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quantity-control button:hover {
+    background: #e9ecef;
+}
+
+.quantity-control input {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.quantity-control input:focus {
+    outline: none;
+}
+
+.book-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.book-actions button {
+    flex: 1;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-add-to-cart {
+    background: white;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+}
+
+.btn-add-to-cart:hover {
+    background: #fef6f5;
+    transform: translateY(-2px);
+}
+
+.btn-buy-now {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-buy-now:hover {
+    background: #d73211;
+    transform: translateY(-2px);
+}
+
+/* Tabs Styles */
+.book-tabs {
+    padding: 0 2rem 2rem;
+}
+
+.tabs-header {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #7f8c8d;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+    color: #3498db;
+}
+
+.tab-btn.active {
+    color: #3498db;
+    border-bottom-color: #3498db;
+}
+
+.tab-content {
+    display: none;
+    padding: 1rem 0;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Book Description */
+#bookDescription {
+    line-height: 1.8;
+    color: #2c3e50;
+}
+
+/* Book Details */
+.book-details-table {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.detail-row {
+    display: flex;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    width: 200px;
+    padding: 1rem;
+    background: #f8f9fa;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.detail-value {
+    flex: 1;
+    padding: 1rem;
+    color: #2c3e50;
+}
+
+/* Reviews Styles */
+.reviews-summary {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.average-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+}
+
+.rating-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    line-height: 1;
+}
+
+.rating-stars {
+    margin: 0.5rem 0;
+    color: #f39c12;
+    font-size: 1.2rem;
+}
+
+.rating-count {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.rating-bars {
+    flex: 1;
+}
+
+.rating-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.rating-label {
+    width: 40px;
+    color: #7f8c8d;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.rating-label i {
+    color: #f39c12;
+    font-size: 0.8rem;
+}
+
+.rating-bar {
+    flex: 1;
+    height: 8px;
+    background: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.rating-fill {
+    height: 100%;
+    background: #f39c12;
+    border-radius: 4px;
+}
+
+.rating-percent {
+    width: 40px;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    text-align: right;
+}
+
+.reviews-list {
+    margin-top: 2rem;
+}
+
+.review-item {
+    border-bottom: 1px solid #eee;
+    padding: 1.5rem 0;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.review-author {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.review-date {
+    color: #95a5a6;
+    font-size: 0.9rem;
+}
+
+.review-rating {
+    margin-bottom: 0.5rem;
+    color: #f39c12;
+}
+
+.review-content {
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+.review-empty {
+    text-align: center;
+    padding: 2rem;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+/* Related Books */
+.related-books {
+    padding: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.related-books h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.related-books h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #3498db;
+    border-radius: 3px;
+}
+
+.related-books-slider {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .book-detail-content {
+        grid-template-columns: 1fr;
+    }
+
+    .book-detail-image {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .reviews-summary {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .average-rating {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .book-detail-container {
+        padding: 1rem;
+    }
+
+    .book-detail-header {
+        padding: 1rem;
+    }
+
+    .book-detail-content {
+        padding: 1rem;
+    }
+
+    .book-tabs {
+        padding: 0 1rem 1rem;
+    }
+
+    .tabs-header {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-btn {
+        white-space: nowrap;
+        padding: 0.8rem 1rem;
+    }
+
+    .book-actions {
+        flex-direction: column;
+    }
+
+    .related-books {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .book-detail-image {
+        max-width: 100%;
+    }
+
+    .detail-row {
+        flex-direction: column;
+    }
+
+    .detail-label {
+        width: 100%;
+        border-bottom: 1px solid #eee;
+    }
+} 

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng - SmartBook</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="customer-dashboard.html">
+                    <div class="logo-icon"></div>
+                    <h1>Smart<span>Book</span></h1>
+                </a>
+            </div>
+            
+            <div class="nav-links">
+                <a href="customer-dashboard.html">
+                    <i class="fas fa-arrow-left"></i> Tiếp tục mua sắm
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="cart-container">
+            <h2><i class="fas fa-shopping-cart"></i> Giỏ Hàng Của Bạn</h2>
+            
+            <div class="cart-content">
+                <div id="cartItems" class="cart-items">
+                    <div class="select-all">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="selectAllItems">
+                            <span class="checkmark"></span>
+                            Chọn tất cả
+                        </label>
+                    </div>
+                    <!-- Sẽ được điền bởi JavaScript -->
+                </div>
+
+                <div class="cart-summary">
+                    <div class="summary-header">
+                        <h3><i class="fas fa-receipt"></i> Tổng Đơn Hàng</h3>
+                    </div>
+                    <div class="summary-content">
+                        <div class="summary-row">
+                            <span>Số sản phẩm đã chọn:</span>
+                            <span id="selectedItems">0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tổng sản phẩm:</span>
+                            <span id="totalItems">0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tạm tính:</span>
+                            <span id="subtotal">0đ</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Phí vận chuyển:</span>
+                            <span id="shippingFee">20.000đ</span>
+                            <div class="shipping-note">(Miễn phí cho đơn hàng từ 200.000đ)</div>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Tổng cộng:</span>
+                            <span id="totalAmount">0đ</span>
+                        </div>
+                        <button id="checkoutButton" class="checkout-button" disabled>
+                            <i class="fas fa-shopping-bag"></i> Mua hàng (<span id="selectedCount">0</span>)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="emptyCart" class="empty-cart" style="display: none;">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>Giỏ hàng trống</h3>
+                <p>Bạn chưa có sản phẩm nào trong giỏ hàng</p>
+                <a href="customer-dashboard.html" class="continue-shopping">
+                    <i class="fas fa-arrow-left"></i> Tiếp tục mua sắm
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Về SmartBook</h4>
+                <p>Nhà sách trực tuyến hàng đầu về sách học tập</p>
+            </div>
+            <div class="footer-section">
+                <h4>Liên Hệ</h4>
+                <p>Email: contact@smartbook.com</p>
+                <p>Điện thoại: 1900-xxxx</p>
+            </div>
+            <div class="footer-section">
+                <h4>Theo Dõi</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SmartBook. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="js/books.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html> 

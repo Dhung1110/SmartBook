@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán Nhanh - SmartBook</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/buy-now-checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="customer-dashboard.html">
+                    <div class="logo-icon"></div>
+                    <h1>Smart<span>Book</span></h1>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="customer-dashboard.html">
+                    <i class="fas fa-arrow-left"></i> Quay về trang chủ
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="checkout-container">
+            <!-- Thông tin đơn hàng -->
+            <div class="order-summary">
+                <h3><i class="fas fa-shopping-basket"></i> Thông Tin Đơn Hàng</h3>
+                <div id="orderItems" class="order-items">
+                    <!-- Sẽ được điền bởi JavaScript -->
+                </div>
+                <div class="order-item-template" style="display: none;">
+                    <div class="order-item">
+                        <div class="item-image">
+                            <img src="" alt="">
+                        </div>
+                        <div class="item-details">
+                            <h4></h4>
+                            <div class="item-quantity">
+                                <button class="quantity-btn minus">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99">
+                                <button class="quantity-btn plus">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="item-price"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="voucher-section">
+                    <h3><i class="fas fa-ticket-alt"></i> Mã Giảm Giá</h3>
+                    <div class="voucher-list">
+                        <!-- Các voucher sẽ được thêm bởi JavaScript -->
+                        <div class="voucher-item">
+                            <input type="radio" name="voucher" id="voucher1" value="WELCOME10">
+                            <label for="voucher1">
+                                <div class="voucher-info">
+                                    <span class="voucher-code">WELCOME10</span>
+                                    <span class="voucher-desc">Giảm 10% cho đơn hàng đầu tiên</span>
+                                </div>
+                                <div class="voucher-expire">HSD: 31/12/2025</div>
+                            </label>
+                        </div>
+                        <div class="voucher-item">
+                            <input type="radio" name="voucher" id="voucher2" value="FREESHIP">
+                            <label for="voucher2">
+                                <div class="voucher-info">
+                                    <span class="voucher-code">FREESHIP</span>
+                                    <span class="voucher-desc">Miễn phí vận chuyển</span>
+                                </div>
+                                <div class="voucher-expire">HSD: 31/12/2025</div>
+                            </label>
+                        </div>
+                    </div>
+                    <div id="voucherMessage" class="voucher-message"></div>
+                </div>
+                <div class="shipping-fee">
+                    <span>Phí vận chuyển:</span>
+                    <span id="shippingFee">20.000đ</span>
+                    <div class="shipping-note">(Miễn phí vận chuyển cho đơn hàng từ 200.000đ)</div>
+                </div>
+                <div class="order-total">
+                    <span>Tổng thanh toán:</span>
+                    <span id="totalAmount">0đ</span>
+                </div>
+            </div>
+
+            <!-- Form thông tin giao hàng -->
+            <form id="checkoutForm" class="checkout-form">
+                <h3><i class="fas fa-shipping-fast"></i> Thông Tin Giao Hàng</h3>
+                
+                <div class="form-group">
+                    <label for="fullname">
+                        <i class="fas fa-user"></i> Họ và tên
+                    </label>
+                    <input type="text" id="fullname" name="fullname" required 
+                           placeholder="Nhập họ và tên người nhận">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">
+                        <i class="fas fa-phone"></i> Số điện thoại
+                    </label>
+                    <input type="tel" id="phone" name="phone" required
+                           placeholder="Nhập số điện thoại liên hệ">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">
+                        <i class="fas fa-envelope"></i> Email
+                    </label>
+                    <input type="email" id="email" name="email" required
+                           placeholder="Nhập địa chỉ email">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">
+                        <i class="fas fa-map-marker-alt"></i> Địa chỉ giao hàng
+                    </label>
+                    <textarea id="address" name="address" required
+                              placeholder="Nhập địa chỉ giao hàng chi tiết"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="note">
+                        <i class="fas fa-sticky-note"></i> Ghi chú
+                    </label>
+                    <textarea id="note" name="note"
+                              placeholder="Thêm ghi chú cho đơn hàng (không bắt buộc)"></textarea>
+                </div>
+
+                <div class="payment-methods">
+                    <h3><i class="fas fa-money-check"></i> Phương Thức Thanh Toán</h3>
+                    <div class="payment-option">
+                        <input type="radio" id="cod" name="payment" value="cod" checked>
+                        <label for="cod">
+                            <i class="fas fa-money-bill-wave"></i>
+                            Thanh toán khi nhận hàng (COD)
+                        </label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="banking" name="payment" value="banking">
+                        <label for="banking">
+                            <i class="fas fa-university"></i>
+                            Chuyển khoản ngân hàng
+                        </label>
+                    </div>
+                    <div id="bankInfoFields" style="display: none; margin-left: 25px;">
+                        <div class="form-group">
+                            <label for="bankAccountName"><i class="fas fa-user-circle"></i> Tên chủ tài khoản</label>
+                            <input type="text" id="bankAccountName" name="bankAccountName" placeholder="Nhập tên chủ tài khoản">
+                        </div>
+                        <div class="form-group">
+                            <label for="bankAccountNumber"><i class="fas fa-hashtag"></i> Số tài khoản</label>
+                            <input type="text" id="bankAccountNumber" name="bankAccountNumber" placeholder="Nhập số tài khoản ngân hàng">
+                        </div>
+                        <div class="form-group">
+                            <label for="bankName"><i class="fas fa-university"></i> Tên ngân hàng</label>
+                            <input type="text" id="bankName" name="bankName" placeholder="Nhập tên ngân hàng">
+                        </div>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="qrcode" name="payment" value="qrcode">
+                        <label for="qrcode">
+                            <i class="fas fa-qrcode"></i>
+                            Thanh toán bằng mã QR
+                        </label>
+                    </div>
+                    <div id="qrCodeDisplay" style="display: none; margin-left: 25px;">
+                        <div class="form-group text-center">
+                            <p><strong>Quét mã QR để thanh toán</strong></p>
+                            <img src="images/qr.png" alt="Mã QR thanh toán" class="qr-code-image">
+                            <p class="text-muted">Sau khi quét mã và thanh toán thành công, đơn hàng của bạn sẽ được xử lý</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="checkout-button">
+                    <i class="fas fa-lock"></i> Đặt hàng an toàn
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Về SmartBook</h4>
+                <p>Nhà sách trực tuyến hàng đầu về sách học tập</p>
+            </div>
+            <div class="footer-section">
+                <h4>Liên Hệ</h4>
+                <p>Email: contact@smartbook.com</p>
+                <p>Điện thoại: 1900-xxxx</p>
+            </div>
+            <div class="footer-section">
+                <h4>Theo Dõi</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SmartBook. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="js/buy-now-checkout.js"></script>
+    
+</body>
+</html> 

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đơn Hàng Của Tôi - SmartBook</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/orders.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="customer-dashboard.html">
+                    <div class="logo-icon"></div>
+                    <h1>Smart<span>Book</span></h1>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="customer-dashboard.html">
+                    <i class="fas fa-arrow-left"></i> Quay về trang chủ
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="orders-container">
+            <div class="orders-header">
+                <h2>Đơn Hàng Của Tôi</h2>
+                <div class="order-tabs">
+                    <button class="tab-btn active" data-tab="current">Đơn hàng hiện tại</button>
+                    <button class="tab-btn" data-tab="history">Lịch sử đơn hàng</button>
+                </div>
+                <div class="order-filters">
+                    <select id="statusFilter" title="Lọc theo trạng thái">
+                        <option value="all">Tất cả trạng thái</option>
+                        <option value="pending">Chờ xác nhận</option>
+                        <option value="confirmed">Đã xác nhận</option>
+                        <option value="shipping">Đang giao</option>
+                        <option value="delivered">Đã giao</option>
+                        <option value="cancelled">Đã hủy</option>
+                    </select>
+                    <select id="timeFilter" title="Lọc theo thời gian">
+                        <option value="all">Tất cả thời gian</option>
+                        <option value="today">Hôm nay</option>
+                        <option value="week">7 ngày qua</option>
+                        <option value="month">30 ngày qua</option>
+                        <option value="year">365 ngày qua</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="currentOrders" class="tab-content active">
+                <div id="ordersList" class="orders-list">
+                    <!-- Danh sách đơn hàng hiện tại sẽ được thêm vào đây bằng JavaScript -->
+                </div>
+            </div>
+
+            <div id="orderHistory" class="tab-content">
+                <div id="historyList" class="orders-list">
+                    <!-- Lịch sử đơn hàng sẽ được thêm vào đây bằng JavaScript -->
+                </div>
+            </div>
+
+            <div id="noOrders" class="no-orders hidden">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Bạn chưa có đơn hàng nào</p>
+                <a href="customer-dashboard.html" class="shop-now-btn">Mua sắm ngay</a>
+            </div>
+        </div>
+    </main>
+
+    <div id="cancelOrderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Xác nhận hủy đơn hàng</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn hủy đơn hàng này?</p>
+                <div class="order-info">
+                    <p>Mã đơn hàng: <span id="cancelOrderId"></span></p>
+                    <p>Ngày đặt: <span id="cancelOrderDate"></span></p>
+                </div>
+                <div class="form-group">
+                    <label for="cancelReason">Lý do hủy đơn:</label>
+                    <select id="cancelReason" required>
+                        <option value="">Chọn lý do hủy</option>
+                        <option value="change_mind">Đổi ý không mua nữa</option>
+                        <option value="wrong_info">Đặt sai thông tin</option>
+                        <option value="duplicate">Đặt trùng đơn hàng</option>
+                        <option value="other">Lý do khác</option>
+                    </select>
+                </div>
+                <div class="form-group" id="otherReasonGroup" style="display: none;">
+                    <label for="otherReason">Lý do khác:</label>
+                    <textarea id="otherReason" rows="3" placeholder="Nhập lý do hủy đơn hàng..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary close-modal">Đóng</button>
+                <button class="btn-danger" id="confirmCancel">Xác nhận hủy</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Về SmartBook</h4>
+                <p>Nhà sách trực tuyến hàng đầu về sách học tập</p>
+            </div>
+            <div class="footer-section">
+                <h4>Liên Hệ</h4>
+                <p>Email: contact@smartbook.com</p>
+                <p>Điện thoại: 1900-xxxx</p>
+            </div>
+            <div class="footer-section">
+                <h4>Theo Dõi</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SmartBook. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="js/orders.js"></script>
+</body>
+</html> 

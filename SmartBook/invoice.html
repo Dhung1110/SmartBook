@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hóa Đơn - SmartBook</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/invoice.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>SmartBook</h1>
+            </div>
+            <div class="nav-links">
+                <a href="customer-dashboard.html">
+                    <i class="fas fa-arrow-left"></i> Quay lại trang chủ
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="invoice-container">
+            <div class="invoice-header">
+                <div class="company-info">
+                    <h2>SmartBook</h2>
+                    <p>Nhà sách trực tuyến hàng đầu về sách học tập</p>
+                    <p>Email: contact@smartbook.com</p>
+                    <p>Điện thoại: 1900-xxxx</p>
+                </div>
+                <div class="invoice-info">
+                    <h1>HÓA ĐƠN</h1>
+                    <p id="invoiceId"></p>
+                    <p id="invoiceDate"></p>
+                </div>
+            </div>
+
+            <div class="customer-info">
+                <h3>Thông Tin Khách Hàng</h3>
+                <div id="customerDetails">
+                    <!-- Sẽ được điền bởi JavaScript -->
+                </div>
+            </div>
+
+            <div class="order-details">
+                <h3>Chi Tiết Đơn Hàng</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Sản Phẩm</th>
+                            <th>Đơn Giá</th>
+                            <th>Số Lượng</th>
+                            <th>Thành Tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orderItems">
+                        <!-- Sẽ được điền bởi JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="invoice-summary">
+                <div class="summary-row">
+                    <span>Tạm tính:</span>
+                    <span id="subtotal"></span>
+                </div>
+                <div class="summary-row">
+                    <span>Giảm giá:</span>
+                    <span id="discount"></span>
+                </div>
+                <div class="summary-row">
+                    <span>Phí vận chuyển:</span>
+                    <span id="shipping"></span>
+                </div>
+                <div class="summary-row total">
+                    <span>Tổng cộng:</span>
+                    <span id="total"></span>
+                </div>
+            </div>
+
+            <div class="invoice-footer">
+                <div class="payment-info">
+                    <h4>Phương Thức Thanh Toán</h4>
+                    <p id="paymentMethod"></p>
+                    <p id="paymentStatus"></p>
+                </div>
+                <div class="actions">
+                    <button id="printInvoice" class="print-btn">
+                        <i class="fas fa-print"></i>
+                        In hóa đơn
+                    </button>
+                    <button id="downloadInvoice" class="download-btn">
+                        <i class="fas fa-download"></i>
+                        Tải PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Về SmartBook</h4>
+                <p>Nhà sách trực tuyến hàng đầu về sách học tập</p>
+            </div>
+            <div class="footer-section">
+                <h4>Liên Hệ</h4>
+                <p>Email: contact@smartbook.com</p>
+                <p>Điện thoại: 1900-xxxx</p>
+            </div>
+            <div class="footer-section">
+                <h4>Theo Dõi</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SmartBook. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="js/invoice.js"></script>
+</body>
+</html> 

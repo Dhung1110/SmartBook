@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán - SmartBook</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/payment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="customer-dashboard.html">
+                    <h1>SmartBook</h1>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="customer-dashboard.html">
+                    <i class="fas fa-arrow-left"></i> Quay về trang chủ
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="payment-container">
+            <div class="payment-header">
+                <h2>Thanh Toán</h2>
+            </div>
+
+            <div class="payment-content">
+                <!-- Thông tin giao hàng -->
+                <div class="shipping-info">
+                    <h3>Thông Tin Giao Hàng</h3>
+                    <form id="shippingForm">
+                        <div class="form-group">
+                            <label for="fullName">Họ tên người nhận</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Địa chỉ giao hàng</label>
+                            <textarea id="address" name="address" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="note">Ghi chú (không bắt buộc)</label>
+                            <textarea id="note" name="note"></textarea>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Thông tin đơn hàng -->
+                <div class="order-summary">
+                    <h3>Thông Tin Đơn Hàng</h3>
+                    <div id="orderItems" class="order-items">
+                        <!-- Sẽ được điền bởi JavaScript -->
+                    </div>
+                    
+                    <div class="summary-section">
+                        <div class="summary-row">
+                            <span>Tạm tính:</span>
+                            <span id="subtotal"></span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Phí vận chuyển:</span>
+                            <span id="shipping"></span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Tổng cộng:</span>
+                            <span id="total"></span>
+                        </div>
+                    </div>
+
+                    <!-- Phương thức thanh toán -->
+                    <div class="payment-methods">
+                        <h3>Phương Thức Thanh Toán</h3>
+                        <div class="payment-options">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="cod" checked>
+                                <span class="radio-custom"></span>
+                                <i class="fas fa-money-bill-wave"></i>
+                                Thanh toán khi nhận hàng (COD)
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="bank">
+                                <span class="radio-custom"></span>
+                                <i class="fas fa-university"></i>
+                                Chuyển khoản ngân hàng
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="momo">
+                                <span class="radio-custom"></span>
+                                <i class="fas fa-wallet"></i>
+                                Ví MoMo
+                            </label>
+                        </div>
+                    </div>
+
+                    <button id="placeOrderBtn" class="place-order-btn">
+                        <i class="fas fa-check"></i>
+                        Đặt Hàng
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Về SmartBook</h4>
+                <p>Nhà sách trực tuyến hàng đầu về sách học tập</p>
+            </div>
+            <div class="footer-section">
+                <h4>Liên Hệ</h4>
+                <p>Email: contact@smartbook.com</p>
+                <p>Điện thoại: 1900-xxxx</p>
+            </div>
+            <div class="footer-section">
+                <h4>Theo Dõi</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SmartBook. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="js/payment.js"></script>
+</body>
+</html> 

@@ -1,0 +1,189 @@
+/* Container kết quả tìm kiếm */
+#searchResults {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: none;
+}
+
+/* Header kết quả tìm kiếm */
+.search-results-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.search-results-header h2 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+}
+
+/* Grid hiển thị kết quả */
+.search-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Item kết quả tìm kiếm */
+.search-result-item {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.search-result-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Phần ảnh sách */
+.book-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.book-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.search-result-item:hover .book-image img {
+    transform: scale(1.05);
+}
+
+/* Phần thông tin sách */
+.book-info {
+    padding: 1.5rem;
+}
+
+.book-info h3 {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.book-info p {
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.book-info .price {
+    color: #e74c3c;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+/* Nút thao tác */
+.book-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.book-actions button {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+}
+
+.view-detail {
+    background: #3498db;
+    color: white;
+}
+
+.view-detail:hover {
+    background: #2980b9;
+}
+
+.add-to-cart {
+    background: #2ecc71;
+    color: white;
+}
+
+.add-to-cart:hover {
+    background: #27ae60;
+}
+
+/* Highlight từ khóa tìm kiếm */
+.highlight {
+    background: #fff3cd;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+/* Không có kết quả */
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+}
+
+.no-results i {
+    font-size: 3rem;
+    color: #bdc3c7;
+    margin-bottom: 1rem;
+}
+
+.no-results p {
+    font-size: 1.1rem;
+}
+
+/* Loading state */
+.search-loading {
+    text-align: center;
+    padding: 2rem;
+}
+
+.search-loading i {
+    font-size: 2rem;
+    color: #3498db;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .search-results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .book-image {
+        height: 150px;
+    }
+
+    .book-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .book-actions {
+        flex-direction: column;
+    }
+
+    .book-actions button {
+        width: 100%;
+    }
+} 
